@@ -1,8 +1,0 @@
-//
-// Created by giulia on 15/09/20.
-//
-
-#ifndef PROGRAMMAZIONE_OBJECT_H
-#define PROGRAMMAZIONE_OBJECT_H
-
-#endif //PROGRAMMAZIONE_OBJECT_H
