@@ -4,14 +4,23 @@
 
 #include "File.h"
 
-File::File(string filename) {
-    file.open(filename);
-    if(!file.is_open())
+File::File(const char* filename) {
+    file = fopen(filename, "r"); //apre il file chiamato filename e l'access mode al file è read
+
+    if(!file)
         throw runtime_error("Failed to open file");
+    else {
+        fseek(file, 0, SEEK_END); //dist=0 di quanti byte deve essere spostato il file pointer, partenza da quale posizione deve essere spostanto (END fine del file)
+        fileSize= ftell(file); //dimensione in byte
+    }
+
 }
 
 File::~File() {
-    file.close();
-    if (file.is_open())
+    if(fclose(file))   //flocse ritorna 0 se ha avuto successo
         throw runtime_error("Failed to close file");
+}
+
+int File::getFileSize() {
+    return fileSize;
 }

@@ -11,11 +11,14 @@ using namespace std;
 
 class File{
 public:
-    File(string filename);
+    File(const char* filename);
     ~File();
+    int getFileSize();
 
 private:
-    fstream file;
+    FILE *file;
+    int fileSize;
+
 };
 
 #endif //PROGRAMMAZIONE_FILE_H
