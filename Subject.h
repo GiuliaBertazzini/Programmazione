@@ -9,9 +9,12 @@
 
 class Subject {
 public:
-    virtual void attachObserver(Observer *obs) = 0;
-    virtual void detachObserver(Observer *obs) = 0;
-    virtual void notifyObserver()  = 0;
+
+    virtual void registerObserver(Observer *obs) = 0;
+    virtual void removeObserver(Observer *obs) = 0;
+    virtual void notifyObservers() const = 0;
+
+protected:
     virtual ~Subject() {};
 
 };
