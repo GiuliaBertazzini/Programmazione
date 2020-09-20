@@ -22,10 +22,14 @@ void LoadResources::notifyObservers() const {
     }
 }
 
-bool LoadResources::didLoadFile() const {
+bool LoadResources::loadedFile() const {
     return loaded;
 }
 
 int LoadResources::getFileSize() const {
     return filesize;
+}
+
+int LoadResources::getNumberResources() const {
+    return numberResources;
 }

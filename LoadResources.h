@@ -17,8 +17,9 @@ public:
     virtual void removeObserver(Observer *obs) override;
     virtual void notifyObservers() const override;
 
-    bool didLoadFile() const;
+    bool loadedFile() const;
     int getFileSize() const;
+    int getNumberResources() const;
 
 private:
     list<Observer*> observers;  //puntatori a classe base perchè non so quali saranno quelli concreti
