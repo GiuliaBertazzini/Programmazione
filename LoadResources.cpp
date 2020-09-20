@@ -21,3 +21,11 @@ void LoadResources::notifyObservers() const {
         itr -> update();              //scorro tutti gli osservatori registrati e chiamo update
     }
 }
+
+bool LoadResources::didLoadFile() const {
+    return loaded;
+}
+
+int LoadResources::getFileSize() const {
+    return filesize;
+}
