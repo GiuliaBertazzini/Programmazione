@@ -8,6 +8,13 @@
 #include "Subject.h"
 #include "Observer.h"
 #include <list>
+#include <QTextEdit>
+#include "File.h"
+#include <QApplication>
+#include <QProgressBar>
+#include <QTimer>
+#include <QPushButton>
+
 using namespace std;
 
 class LoadResources : public Subject {
@@ -20,6 +27,8 @@ public:
     bool loadedFile() const;
     int getFileSize() const;
     int getNumberResources() const;
+    const QString & getFileName();
+    void load(std::vector<const char*> filenames);
 
 private:
     list<Observer*> observers;  //puntatori a classe base perchè non so quali saranno quelli concreti
@@ -27,5 +36,7 @@ private:
 
     bool loaded;
     int filesize;
+
+    QString filename;
 };
 #endif //PROGRAMMAZIONE_LOADRESOURCES_H
