@@ -12,18 +12,18 @@ class ConcreteObserver : public Observer {
 public:
     ConcreteObserver(LoadResources *resources){
         res=resources;
-        resources -> attachObserver(this);
+        resources->registerObserver(this);
     }
 
     virtual ~ConcreteObserver(){
-        res -> detachObserver(this);
+        res->removeObserver(this);
     }
 
-    virtual void update() {
+    virtual void update() override {
 
     }
 
-private:
+
     LoadResources * res;
 };
 

@@ -4,14 +4,13 @@
 
 #include "File.h"
 
-File::File(const char* filename) {
-    file = fopen(filename, "r"); //apre il file chiamato filename e l'access mode al file è read
+File::File(const char* filename): file(fopen(filename, "r")), fileSize(0) { //apre il file chiamato filename e l'access mode al file è read
 
     if(!file)
         throw runtime_error("Failed to open file");
     else {
         fseek(file, 0, SEEK_END); //dist=0 di quanti byte deve essere spostato il file pointer, partenza da quale posizione deve essere spostanto (END fine del file)
-        fileSize= ftell(file); //dimensione in byte
+        fileSize= static_cast<int>(ftell(file)); //dimensione in byte
     }
 
 }

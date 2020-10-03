@@ -20,6 +20,7 @@ using namespace std;
 class LoadResources : public Subject {
 public:
     LoadResources();
+
     virtual void registerObserver(Observer * obs) override;
     virtual void removeObserver(Observer *obs) override;
     virtual void notifyObservers() const override;
@@ -28,7 +29,9 @@ public:
     int getFileSize() const;
     int getNumberResources() const;
     const QString & getFileName();
-    void load(std::vector<const char*> filenames);
+    void load(std::vector<const char*> &filenames);
+    void handleFile(const char *it);
+    void setLoad(bool l);
 
 private:
     list<Observer*> observers;  //puntatori a classe base perchè non so quali saranno quelli concreti

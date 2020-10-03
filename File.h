@@ -11,7 +11,7 @@ using namespace std;
 
 class File{
 public:
-    File(const char* filename);
+    explicit File(const char* filename);
     ~File();
     int getFileSize();
 

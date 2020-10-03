@@ -13,8 +13,6 @@ public:
     virtual void registerObserver(Observer *obs) = 0;
     virtual void removeObserver(Observer *obs) = 0;
     virtual void notifyObservers() const = 0;
-
-protected:
     virtual ~Subject() {};
 
 };

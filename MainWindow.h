@@ -14,8 +14,9 @@
 #include <QPushButton>
 
 class MainWindow : public QMainWindow, public Observer {
+    Q_OBJECT
 public:
-    MainWindow(LoadResources *res, QWidget *parent = 0);
+    explicit MainWindow(LoadResources *res, QWidget *parent = 0);
     virtual ~MainWindow();
     virtual void update() override;
     LoadResources *getResources() const;
