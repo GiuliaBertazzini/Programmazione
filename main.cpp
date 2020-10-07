@@ -1,6 +1,4 @@
-#include <iostream>
 #include <QVBoxLayout>
-#include <QPushButton>
 #include <QApplication>
 #include "MainWindow.h"
 
