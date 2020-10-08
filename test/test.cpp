@@ -8,15 +8,15 @@
 #include "../ConcreteObserver.h"
 
 TEST(TestFile, testNonExistentResource) {
-    ASSERT_THROW(File file("../resources/non_existing_file.jpg"), runtime_error);
+    ASSERT_THROW(File file("../resources/None.txt"), runtime_error);
 }
 
 TEST(TestFile, testExistentResource) {
-    ASSERT_NO_THROW(File file("../resources/Prova"));
+    ASSERT_NO_THROW(File file("../resources/File.txt"));
 }
 
 TEST(TestFile, testSizeForExistentFile) {
-    File file("../resources/Prova");
+    File file("../resources/File.txt");
     ASSERT_FALSE(file.getFileSize()==0);
 }
 
@@ -41,10 +41,10 @@ TEST(TestObserver, testFileName) {
     ConcreteObserver observer(&loader);
 
     std::vector<const char*> vector;
-    vector.push_back("file.h");
+    vector.push_back("filename.txt");
     loader.load(vector);
 
-    ASSERT_EQ(observer.res->getFileName(), "file.h");
+    ASSERT_EQ(observer.res->getFileName(), "filename.txt");
 
 }
 
