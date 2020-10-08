@@ -24,7 +24,7 @@ MainWindow::MainWindow(LoadResources *res, QWidget *parent) : QMainWindow(parent
 
     //imposta il bottone
     button = new QPushButton("Carica Risorse", this);
-    button -> setGeometry(QRect(QPoint(215, 170), QSize(190, 30)));
+    button -> setGeometry(QRect(QPoint(205, 170), QSize(190, 30)));
 
     //imposta la progress bar
     progressBar = new QProgressBar(this);
@@ -42,7 +42,7 @@ MainWindow::MainWindow(LoadResources *res, QWidget *parent) : QMainWindow(parent
 
     resources = res;
 
-    //connette il bottone alla funzione che deve attivare
+    //connette il bottone alla funzione che deve attivare; released() signal per push button
     connect(button, SIGNAL(released()), this ,SLOT(loadResources()));
 }
 
@@ -66,7 +66,7 @@ void MainWindow::update() {
         text->append(log);
 
         //aggiorna il testo del bottone
-        QString percentText = QString::number(progressBar->value()/10) +QString("% di risorse caricate");
+        QString percentText = QString("Risorse Caricate!");
         button->setText(percentText);
 
     }
