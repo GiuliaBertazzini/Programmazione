@@ -15,7 +15,7 @@ public:
     virtual void notifyObservers() const = 0;
 
 protected:
-    virtual ~Subject() {};
+    virtual ~Subject() = default;
 
 };
 

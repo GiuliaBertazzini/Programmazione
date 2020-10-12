@@ -7,6 +7,7 @@
 #include <QPainter>
 
 
+
 MainWindow::MainWindow(LoadResources *res, QWidget *parent) : QMainWindow(parent), resources(res){
 
     //imposta titolo e dimensione della finestra
@@ -76,19 +77,34 @@ void MainWindow::update() {
     }
 }
 
+vector <string>  MainWindow::addResources(){
+    vector <string> filenames;
+
+    filenames.emplace_back("../resources/File.txt");
+    filenames.emplace_back("../resources/File2.txt");
+    filenames.emplace_back("../resources/cat.jpg");
+    filenames.emplace_back("../resources/dog.jpg");
+
+    return filenames;
+}
+
 void MainWindow::loadResources() {
     progressBar->setValue(0);
     text -> setText("Carico le risorse...");
 
-    vector <const char*> filenames;
+    vector <string> f = addResources();
 
-    filenames.push_back("../resources/File.txt");
-    filenames.push_back("../resources/File2.txt");
-    filenames.push_back("../resources/cat.jpg");
-    filenames.push_back("../resources/dog.jpg");
+    resources -> load(f);
 
-    resources -> load(filenames);
+}
 
+
+QProgressBar * MainWindow::getProgressBar() {
+    return progressBar;
+}
+
+QTextEdit * MainWindow::getText() {
+    return text;
 }
 
 

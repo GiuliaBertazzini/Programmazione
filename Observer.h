@@ -10,7 +10,7 @@ public:
     virtual void update() = 0;
 
 protected:
-    virtual ~Observer(){};
+    virtual ~Observer() = default;
 };
 
 #endif //PROGRAMMAZIONE_OBSERVER_H

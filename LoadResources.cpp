@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "LoadResources.h"
+#include <thread>
+#include <chrono>
 
 LoadResources::LoadResources() {
     numberResources = 0;
@@ -45,7 +47,7 @@ const QString & LoadResources::getFileName() {
 }
 
 
-void LoadResources::load(std::vector<const char *> &filenames) {
+void LoadResources::load(std::vector<string> &filenames) {
     try {
         numberResources = filenames.size();
         if (numberResources==0) {
@@ -55,20 +57,22 @@ void LoadResources::load(std::vector<const char *> &filenames) {
         std::cerr<<e.what()<<std::endl;
     }
     for (auto &it : filenames) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(700));
         handleFile(it);
+
     }
 }
 
-void LoadResources::handleFile(const char *it) {
+void LoadResources::handleFile(string it) {
     try {
         File file(it);
-        filename = QString(it);
+        filename = QString(it.c_str());  //converte nome in Unicode
         filesize = file.getFileSize();
         setLoad(true);
         notifyObservers();
 
     } catch (std::runtime_error &e) {
-        filename = QString(it);
+        filename = QString(it.c_str());
         setLoad(false);
         notifyObservers();
 

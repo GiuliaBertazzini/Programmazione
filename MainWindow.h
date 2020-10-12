@@ -20,6 +20,10 @@ public:
     virtual ~MainWindow();
     virtual void update() override;
     LoadResources *getResources() const;
+    QProgressBar * getProgressBar();
+    QTextEdit * getText();
+    vector <string>  addResources();
+
 
 private slots:
     void loadResources();
