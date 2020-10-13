@@ -21,15 +21,15 @@ TEST(TestFile, testSizeForExistentFile) {
 }
 
 TEST(TestLoadResources, testNoFileNamesProvided) {
-    std::vector<const char*> vector;
+    std::vector<string> vector;
     LoadResources loader;
     loader.load(vector);
     ASSERT_EQ(loader.getNumberResources(),0);
 }
 
 TEST(TestLoadResources, testFileNamesProvided) {
-    std::vector<const char*> vector;
-    vector.push_back("anything");
+    std::vector<string> vector;
+    vector.emplace_back("anything");
     LoadResources loader;
     loader.load(vector);
     ASSERT_FALSE(loader.getNumberResources()==0);
@@ -40,8 +40,8 @@ TEST(TestObserver, testFileName) {
     LoadResources loader;
     ConcreteObserver observer(&loader);
 
-    std::vector<const char*> vector;
-    vector.push_back("filename.txt");
+    std::vector<string> vector;
+    vector.emplace_back("filename.txt");
     loader.load(vector);
 
     ASSERT_EQ(observer.res->getFileName(), "filename.txt");
@@ -53,8 +53,8 @@ TEST(TestObserver, testFileSize) {
     LoadResources loader;
     ConcreteObserver observer(&loader);
 
-    std::vector<const char*> vector;
-    vector.push_back("../resources/File.txt");
+    std::vector<string> vector;
+    vector.emplace_back("../resources/File.txt");
     loader.load(vector);
 
     ASSERT_EQ(observer.res->getFileSize(), 7);
@@ -66,8 +66,8 @@ TEST(TestObserver, testLoaded) {
     LoadResources loader;
     ConcreteObserver observer(&loader);
 
-    std::vector<const char*> vector;
-    vector.push_back("../resources/File.txt");
+    std::vector<string> vector;
+    vector.emplace_back("../resources/File.txt");
     loader.load(vector);
 
     ASSERT_EQ(observer.res->loadedFile(), true);
