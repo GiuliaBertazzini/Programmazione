@@ -4,7 +4,7 @@
 
 #include "File.h"
 
-File::File(const char* filename): file(fopen(filename, "r")), fileSize(0) { //apre il file chiamato filename e l'access mode al file è read
+File::File(string filename): file(fopen(filename.c_str(), "r")), fileSize(0) { //apre il file chiamato filename e l'access mode al file è read
 
     if(!file)
         throw runtime_error("Failed to open file");

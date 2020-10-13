@@ -29,8 +29,8 @@ public:
     int getFileSize() const;
     int getNumberResources() const;
     const QString & getFileName();
-    void load(std::vector<string> &filenames);
-    void handleFile(string t);
+    void load(std::vector<string>const &filenames);
+    void handleFile(const string &it);
     void setLoad(bool l);
 
 private:

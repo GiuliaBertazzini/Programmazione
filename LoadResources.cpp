@@ -47,7 +47,7 @@ const QString & LoadResources::getFileName() {
 }
 
 
-void LoadResources::load(std::vector<string> &filenames) {
+void LoadResources::load(std::vector<string>const &filenames) {
     try {
         numberResources = filenames.size();
         if (numberResources==0) {
@@ -63,7 +63,7 @@ void LoadResources::load(std::vector<string> &filenames) {
     }
 }
 
-void LoadResources::handleFile(string it) {
+void LoadResources::handleFile(const string &it) {
     try {
         File file(it);
         filename = QString(it.c_str());  //converte nome in Unicode

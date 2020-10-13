@@ -8,7 +8,7 @@
 
 
 
-MainWindow::MainWindow(LoadResources *res, QWidget *parent) : QMainWindow(parent), resources(res){
+MainWindow::MainWindow(LoadResources *res, std::vector<string> f, QWidget *parent) : QMainWindow(parent), resources(res), file(f){
 
     //imposta titolo e dimensione della finestra
     this->setWindowTitle("Laboratorio di programmazione");
@@ -42,6 +42,8 @@ MainWindow::MainWindow(LoadResources *res, QWidget *parent) : QMainWindow(parent
     progressBar -> setValue(0);
 
     resources = res;
+
+
 
     //connette il bottone alla funzione che deve attivare; released() signal per push button
     connect(button, SIGNAL(released()), this ,SLOT(loadResources()));
@@ -77,24 +79,12 @@ void MainWindow::update() {
     }
 }
 
-vector <string>  MainWindow::addResources(){
-    vector <string> filenames;
-
-    filenames.emplace_back("../resources/File.txt");
-    filenames.emplace_back("../resources/File2.txt");
-    filenames.emplace_back("../resources/cat.jpg");
-    filenames.emplace_back("../resources/dog.jpg");
-
-    return filenames;
-}
 
 void MainWindow::loadResources() {
     progressBar->setValue(0);
     text -> setText("Carico le risorse...");
 
-    vector <string> f = addResources();
-
-    resources -> load(f);
+    resources -> load(file);
 
 }
 
