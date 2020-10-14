@@ -15,21 +15,26 @@ MainWindow::MainWindow(LoadResources *res, std::vector<string> f, QWidget *paren
     this->setFixedSize(QSize(600, 400));
 
     //imposta il testo di informazione
-    title = new QLabel("Classe che carica file di risorse e aggiorna una progress bar (con QT)", this);
-    title -> setGeometry(QRect(QPoint(100, 30), QSize(400, 100)));
+    title = new QLabel("Classe che carica file di risorse e aggiorna una progress bar per il numero di risorse e una per i byte caricati (con QT)", this);
+    title -> setGeometry(QRect(QPoint(100, 20), QSize(400, 100)));
     title -> setWordWrap(true);
     title -> setAlignment(Qt::AlignCenter);
     QFont font = title -> font();
-    font.setPointSize(13);
+    font.setPointSize(11);
     title -> setFont(font);
 
     //imposta il bottone
     button = new QPushButton("Carica Risorse", this);
-    button -> setGeometry(QRect(QPoint(205, 170), QSize(190, 30)));
+    button -> setGeometry(QRect(QPoint(205, 200), QSize(190, 30)));
 
     //imposta la progress bar
     progressBar = new QProgressBar(this);
     progressBar -> setGeometry(QRect(QPoint(150, 140), QSize(300, 30)));
+
+    progressByteBar = new QProgressBar(this);
+    progressByteBar -> setGeometry(QRect(QPoint(150, 170),QSize(300, 30)));
+    progressByteBar -> setFormat("%v");
+
 
     //imposta il campo di testo;
     text = new QTextEdit(this);
@@ -40,6 +45,10 @@ MainWindow::MainWindow(LoadResources *res, std::vector<string> f, QWidget *paren
     progressBar -> setMinimum(0);
     progressBar -> setMaximum(1000);
     progressBar -> setValue(0);
+
+    progressByteBar -> setMinimum(0);
+    progressByteBar -> setMaximum(100);
+    progressByteBar -> setValue(0);
 
     resources = res;
 
@@ -63,6 +72,9 @@ void MainWindow::update() {
         //aggiorna la percentuale della progress bar
         int percentage = progressBar -> value()+ (1000/resources->getNumberResources());
         progressBar -> setValue(percentage);
+
+        int byteLoaded = progressByteBar -> value() + resources->getFileSize();
+        progressByteBar -> setValue(byteLoaded);
 
         //aggiorna il testo
         QString log = "Caricato correttamente il file " + QString(resources->getFileName()) + QString(", ") +QString::number(resources->getFileSize()) +QString(" bytes.");
@@ -95,6 +107,10 @@ QProgressBar * MainWindow::getProgressBar() {
 
 QTextEdit * MainWindow::getText() {
     return text;
+}
+
+QPushButton * MainWindow::getButton(){
+    return button;
 }
 
 

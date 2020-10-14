@@ -17,12 +17,13 @@
 class MainWindow : public QMainWindow, public Observer {
     Q_OBJECT
 public:
-    explicit MainWindow(LoadResources *res, std::vector<string> file, QWidget *parent = 0);
+    explicit MainWindow(LoadResources *res, std::vector<string> file, QWidget *parent=0);
     virtual ~MainWindow();
     virtual void update() override;
     LoadResources *getResources() const;
     QProgressBar * getProgressBar();
     QTextEdit * getText();
+    QPushButton * getButton();
 
 
 
@@ -34,6 +35,7 @@ private:
 
     QPushButton * button;
     QProgressBar * progressBar;
+    QProgressBar * progressByteBar;
     QTextEdit * text;
 
     QLabel * title;

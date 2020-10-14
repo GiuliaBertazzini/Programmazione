@@ -38,6 +38,7 @@ int LoadResources::getFileSize() const {
     return filesize;
 }
 
+
 int LoadResources::getNumberResources() const {
     return numberResources;
 }

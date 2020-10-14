@@ -32,6 +32,7 @@ public:
     void load(std::vector<string>const &filenames);
     void handleFile(const string &it);
     void setLoad(bool l);
+    int totByte();
 
 private:
     list<Observer*> observers;  //puntatori a classe base perchè non so quali saranno quelli concreti
