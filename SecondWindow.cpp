@@ -46,7 +46,7 @@ void SecondWindow::update() {
         text->append(log);
 
 
-        //aggiorna il testo del bottone
+        //aggiorna il testo
         line -> setText("Le risorse sono state caricate!");
 
     }
