@@ -1,1 +1,1 @@
-Classe che carica file di risorse e aggiorna una progress bar (usando design pattern Observer).
+Classe che carica file di risorse e aggiorna due progress bar, una per il numero di risorse caricate e una per i byte caricati (usando design pattern Observer).
